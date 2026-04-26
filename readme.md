@@ -47,4 +47,6 @@ emcc wrapping.c -o wrapping.js -s NO_EXIT_RUNTIME=1 -s EXPORTED_RUNTIME_METHODS=
 # Helpfull Resources
 - <a href="https://developer.mozilla.org/en-US/docs/WebAssembly">MDN Handbook</a>
 ## Writing WebAssembly Text Format (WAT)
-<a href="https://blog.ttulka.com/learning-webassembly-3-wat-programming-basics/">Basic Example</a>
+- <a href="https://blog.ttulka.com/learning-webassembly-3-wat-programming-basics/">Basic Example</a>
+- <a href="https://www.packtpub.com/en-us/learning/how-to-tutorials/the-elements-of-webassembly-wat-and-wasm-explained-tutorial/">packthub</a>
+
