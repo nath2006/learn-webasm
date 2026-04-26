@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      let memory = new WebAssembly.Memory({
+        initial: 256,
+        maximum: 512
+      });
+
+      let exports;
+      WebAssembly.instantiateStreaming(fetch("memory.wasm"), {
+        js : {
+          mem : memory
+        }
+      }).then(result => {
+        exports = result.instance.exports;
+        memory = result.instance.exports.memory;
+      });
+
+      const rum_wasm = () => {
+        let arr = new Uint32Array(memory.buffer);
+        for (let i = 0; i<10; i++){
+          arr[i] = i * 2;
+        }
+
+        let sum = exports.accumulate(, 10)
+
+        document.querySelector("#ret").innerHTML += `${sum}<br>`;
+      }
+    </script>
+
+     <input type="number" name="numberOne" id="numberOne">
+    
+
+    <button style="margin:10px;" onclick="run_wasm()">Run Button</button>
+    <p id="ret"></p>
+
+</body>
+</html>
